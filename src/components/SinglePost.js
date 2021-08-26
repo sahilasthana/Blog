@@ -38,12 +38,12 @@ const dateFormat = (inputDate) => {
 export default function SinglePost(props) {
   const classes = useStyles();
   const { post } = props;
-  const PF = "https://blog-begin.herokuapp.com//file/";
+  const PF = "https://blog-begin.herokuapp.com/file/";
   const [user, setUser] = useState("");
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`https://blog-begin.herokuapp.com//api/auth/${post.username}`);
+      const res = await axios.get(`https://blog-begin.herokuapp.com/api/auth/${post.username}`);
       setUser(res.data.user.profilePhoto);
     };
     fetchUser();

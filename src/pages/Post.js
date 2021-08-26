@@ -23,7 +23,7 @@ export default function Post() {
   const location = useLocation();
   const [post, setPost] = useState({});
   const path = location.pathname.split("/")[2];
-  const PF = "https://blog-begin.herokuapp.com//file/";
+  const PF = "https://blog-begin.herokuapp.com/file/";
 
   const [sidebar, setSideBar] = useState({
     title: "About",
@@ -38,10 +38,10 @@ export default function Post() {
 
   useEffect(() => {
     const getPost = async () => {
-        const res = await axios.get("https://blog-begin.herokuapp.com//api/post/" + path);
+        const res = await axios.get("https://blog-begin.herokuapp.com/api/post/" + path);
         setPost(res.data);
 
-        const userData = await axios.get(`https://blog-begin.herokuapp.com//api/auth/${res.data.username}`);
+        const userData = await axios.get(`https://blog-begin.herokuapp.com/api/auth/${res.data.username}`);
         const user = userData.data.user;
         setSideBar({
           title: 'About',

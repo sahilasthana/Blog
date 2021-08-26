@@ -126,7 +126,7 @@ ScrollTop.propTypes = {
 export default function Header(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const PF = "https://blog-begin.herokuapp.com//file/";
+  const PF = "https://blog-begin.herokuapp.com/file/";
   const [user, setUser] = useState("");
 
   const handleOpen = (event) => {
@@ -149,7 +149,7 @@ export default function Header(props) {
   useEffect(() => {
     const fetchUser = async () => {
       if (storedData) {
-        const res = await axios.get(`https://blog-begin.herokuapp.com//api/user/singleUser/${storedData.userId}`);
+        const res = await axios.get(`https://blog-begin.herokuapp.com/api/user/singleUser/${storedData.userId}`);
         setUser(res.data);
       }
     };

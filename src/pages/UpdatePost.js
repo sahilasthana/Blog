@@ -86,13 +86,13 @@ export default function UpdatePost() {
   const [file, setFile] = useState(null);
   const theme = useTheme();
   const [categoryName, setCategoryName] = React.useState([]);
-  const PF = "https://blog-begin.herokuapp.com//file/";
+  const PF = "https://blog-begin.herokuapp.com/file/";
 
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const getPosts = async () => {
-        const res = await axios.get(`https://blog-begin.herokuapp.com//api/post/${path}`);
+        const res = await axios.get(`https://blog-begin.herokuapp.com/api/post/${path}`);
         setPost(res.data);
         setTitle(res.data.title);
         setContent(res.data.content);
@@ -122,13 +122,13 @@ export default function UpdatePost() {
       data.append("filename", filename);
       data.append("file", file);
       try {
-        const imgUrl = await axios.post("https://blog-begin.herokuapp.com//file/upload", data);
+        const imgUrl = await axios.post("https://blog-begin.herokuapp.com/file/upload", data);
         newPost.photo = imgUrl.data;
       } catch (error) {
         console.log("not uploaded!");
       }
     }
-    const post = await axios.put(`https://blog-begin.herokuapp.com//api/post/${path}`, newPost);
+    const post = await axios.put(`https://blog-begin.herokuapp.com/api/post/${path}`, newPost);
     window.location.replace(`/post/${post.data._id}`);
   }
 
@@ -187,24 +187,24 @@ export default function UpdatePost() {
             />
           </IconButton>
         </label>
-        <TextField 
+        <TextField
           type="file"
           id="fileInput"
           className={classes.addImage}
           onChange={e => setFile(e.target.files[0])}
         />
-        <TextField 
-          label="Title" 
-          className={classes.title} 
+        <TextField
+          label="Title"
+          className={classes.title}
           multiline
           value={title}
           InputLabelProps={{shrink: true}}
           spellCheck={false}
           onChange={e => setTitle(e.target.value)}
         />
-        <TextField 
-          label="Content" 
-          className={classes.content} 
+        <TextField
+          label="Content"
+          className={classes.content}
           multiline
           value={content}
           spellCheck={false}

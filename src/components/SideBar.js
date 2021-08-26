@@ -36,7 +36,7 @@ export default function SideBar(props) {
   let state = useRef(JSON.parse(localStorage.getItem('blogUser')));
   const classes = useStyles();
   const { sidebar } = props;
-  const PF = "https://blog-begin.herokuapp.com//file/";
+  const PF = "https://blog-begin.herokuapp.com/file/";
 
   return (
     <Grid item xs={12} md={4}>

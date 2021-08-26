@@ -41,11 +41,11 @@ function Profile() {
   const [linkedin, setLinkedin] = useState("");
   const [github, setGithub] = useState("");
   const [profilePhoto,setProfilePhoto] = useState("");
-  const PF = "https://blog-begin.herokuapp.com//file/";
+  const PF = "https://blog-begin.herokuapp.com/file/";
 
   useEffect(() => {
     const getUser = async () => {
-        const res = await axios.get(`https://blog-begin.herokuapp.com//api/auth/?userId=${path}`);
+        const res = await axios.get(`https://blog-begin.herokuapp.com/api/auth/?userId=${path}`);
         setUser(res.data.user);
         setFullName(res.data.user.fullName);
         setAbout(res.data.user.about);

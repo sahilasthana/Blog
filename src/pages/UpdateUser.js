@@ -52,13 +52,13 @@ export default function UpdateUser() {
   const [facebook, setFacebook] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [github, setGithub] = useState("");
-  const PF = "https://blog-begin.herokuapp.com//file/";
+  const PF = "https://blog-begin.herokuapp.com/file/";
   const [file, setFile] = useState(null);
 
   const [open, setOpen] = useState(false);
   useEffect(() => {
     const getUser = async () => {
-        const res = await axios.get(`https://blog-begin.herokuapp.com//api/auth/?userId=${path}`);
+        const res = await axios.get(`https://blog-begin.herokuapp.com/api/auth/?userId=${path}`);
         setUser(res.data.user);
         setFullName(res.data.user.fullName);
         setAbout(res.data.user.about);
@@ -92,13 +92,13 @@ export default function UpdateUser() {
       data.append("filename", filename);
       data.append("file", file);
       try {
-        const imgUrl = await axios.post("https://blog-begin.herokuapp.com//file/upload", data);
+        const imgUrl = await axios.post("https://blog-begin.herokuapp.com/file/upload", data);
         updatedUser.profilePhoto = imgUrl.data;
       } catch (error) {
         console.log("not uploaded!");
       }
     }
-    await axios.put(`https://blog-begin.herokuapp.com//api/user/${path}`, updatedUser);
+    await axios.put(`https://blog-begin.herokuapp.com/api/user/${path}`, updatedUser);
     window.location.replace("/");
   }
 
@@ -118,10 +118,10 @@ export default function UpdateUser() {
       {
         (user.profilePhoto || file)
         &&
-        <Avatar 
-          alt="Remy Sharp" 
+        <Avatar
+          alt="Remy Sharp"
           src={ file ? URL.createObjectURL(file) : PF + user.profilePhoto}
-          className={classes.large} 
+          className={classes.large}
         />
       }
       <form className={classes.write} >
@@ -137,60 +137,60 @@ export default function UpdateUser() {
             />
           </IconButton>
         </label>
-        <TextField 
+        <TextField
           type="file"
           id="fileInput"
           className={classes.addImage}
           onChange={e => setFile(e.target.files[0])}
         />
-        <TextField 
-          label="Full Name" 
-          className={classes.title} 
+        <TextField
+          label="Full Name"
+          className={classes.title}
           value={fullName}
           spellCheck={false}
           multiline
           onChange={e => setFullName(e.target.value)}
           autoFocus
         />
-        <TextField 
-          label="Password" 
-          className={classes.content} 
+        <TextField
+          label="Password"
+          className={classes.content}
           InputLabelProps={{shrink: true}}
           type="password"
           onChange={e => setPassword(e.target.value)}
         />
-        <TextField 
-          label="About" 
-          className={classes.title} 
+        <TextField
+          label="About"
+          className={classes.title}
           value={about}
           multiline
           spellCheck={false}
           onChange={e => setAbout(e.target.value)}
         />
-        <TextField 
-          label="Github Username" 
-          className={classes.title} 
+        <TextField
+          label="Github Username"
+          className={classes.title}
           value={github}
           spellCheck={false}
           onChange={e => setGithub(e.target.value)}
         />
-        <TextField 
-          label="Instagram Username" 
-          className={classes.title} 
+        <TextField
+          label="Instagram Username"
+          className={classes.title}
           spellCheck={false}
           value={instagram}
           onChange={e => setInstagram(e.target.value)}
         />
-        <TextField 
-          label="Facebook Username" 
-          className={classes.title} 
+        <TextField
+          label="Facebook Username"
+          className={classes.title}
           value={facebook}
           spellCheck={false}
           onChange={e => setFacebook(e.target.value)}
         />
-        <TextField 
-          label="Linkedin Username" 
-          className={classes.title} 
+        <TextField
+          label="Linkedin Username"
+          className={classes.title}
           value={linkedin}
           spellCheck={false}
           onChange={e => setLinkedin(e.target.value)}

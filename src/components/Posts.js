@@ -11,7 +11,7 @@ export default function Posts() {
     useEffect(() => {
         setTimeout(() => {
             const fetchPosts = async () => {
-              const res = await axios.get("https://blog-begin.herokuapp.com//api/post/");
+              const res = await axios.get("https://blog-begin.herokuapp.com/api/post/");
               setPosts(res.data);
               setIsLoading(false);
             };

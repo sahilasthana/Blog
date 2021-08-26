@@ -24,7 +24,7 @@ export default function PostByCat() {
     useEffect(() => {
         setTimeout(() => {
             const getPosts = async () => {
-                const res = await axios.get(`https://blog-begin.herokuapp.com//api/user/${path}`);
+                const res = await axios.get(`https://blog-begin.herokuapp.com/api/user/${path}`);
                 setPosts(res.data);
                 setIsLoading(false);
             }
